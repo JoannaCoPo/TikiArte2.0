@@ -11,6 +11,7 @@ gem "sprockets-rails"
 
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3', '~> 1.3.10'
+gem 'pg'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -31,7 +32,9 @@ gem 'pry'
 gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
-gem "aws-sdk-s3", require: false
+gem 'aws-sdk-s3', '~> 1.114'
+# gem "aws-sdk-s3", require: false
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", "~> 4.0"
 
@@ -74,6 +77,7 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+  gem 'listen', '~> 3.1', '>= 3.1.5'
 end
 
 group :test do
