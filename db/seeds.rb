@@ -1,22 +1,20 @@
 Director.destroy_all
 
-jacob = Director.create(
-  email: "jacobmarcareer@gmail.com",
-  token: 66666,
-  google_id: 12345
+parent_as_director = Director.create!(
+  first_name: "Moira",
+  last_name: "Rose",
+  email: "crowmother@gmail.com",
+  token: 98765,
+  google_id: 12345,
+  date_of_birth: Date.parse("03/04/1954")
 )
 
-jacob.artists.create(
-  username: "satan",
-  password: "12345"
+parent_as_director.artists.create!(
+  username: "child_as_artist",
+  password_digest: "fridakahlo"
 )
 
-jacob.artists.create(
-  username: "medusa",
-  password: "xenasux"
-)
-
-jacob.artists.create(
-  username: "xena",
-  password: "imdabes"
+parent_as_director.artists.create!(
+  username: "child_2_as_artist",
+  password_digest: "botero"
 )
