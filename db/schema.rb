@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_19_190826) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_20_203331) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,5 +34,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_19_190826) do
     t.date "date_of_birth"
   end
 
+  create_table "images", force: :cascade do |t|
+    t.string "title"
+    t.string "description"
+    t.string "tags"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "artist_id"
+    t.integer "privacy_status", default: 0
+    t.index ["artist_id"], name: "index_images_on_artist_id"
+  end
+
   add_foreign_key "artists", "directors"
+  add_foreign_key "images", "artists"
 end
