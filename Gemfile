@@ -28,11 +28,11 @@ gem "stimulus-rails"
 # Build JSON APIs with ease [https://github.com/rails/jbuilder]
 gem "jbuilder"
 
-gem 'pry'
 gem 'fast_jsonapi'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faraday'
 gem 'aws-sdk-s3', '~> 1.114'
+gem 'omniauth-google-oauth2'
 # gem "aws-sdk-s3", require: false
 
 # Use Redis adapter to run Action Cable in production
@@ -65,6 +65,7 @@ group :development, :test do
   gem 'standard'
   gem 'factory_bot_rails'
   gem 'faker'
+  gem 'pry'
 end
 
 group :development do

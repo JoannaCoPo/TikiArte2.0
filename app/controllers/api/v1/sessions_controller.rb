@@ -1,8 +1,9 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    director = Director.find_or_create_by(email: params[:director][:email])
-    director.update(director_params)
-    render json: DirectorSerializer.new(director)
+    binding.pry
+    # director = Director.find_or_create_by(email: params[:director][:email])
+    # director.update(director_params)
+    # render json: DirectorSerializer.new(director)
   end
 
   private
