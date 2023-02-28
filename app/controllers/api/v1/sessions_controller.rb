@@ -5,6 +5,8 @@ class Api::V1::SessionsController < ApplicationController
                     last_name: director_params[:first_name], 
                     token: director_params[:token], 
                     google_id: director_params[:google_id])
+    
+    # session[user_id] = director.id
     # render json: DirectorSerializer.new(director)
     # TODO look at gem options for serializers 
   end
@@ -25,5 +27,6 @@ class Api::V1::SessionsController < ApplicationController
 end
 
 # define session id => current_user
-# think about non-oauth login option 
+# think about non-oauth login option
+  # UI - linkTo /auth/google_oath2
 # RegistrationService(whatever params)
