@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       # post '/auth/:oauth_provider/callback', to: 'sessions#create'
-      get '/auth/:oauth_provider/callback', to: 'sessions#create'
+      get '/auth/:provider/callback', to: 'sessions#create'
+
       
       # original routing; TBD on whether will persist
       # post 'sessions/create', to: 'sessions#create'
