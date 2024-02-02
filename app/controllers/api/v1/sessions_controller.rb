@@ -1,32 +1,29 @@
 class Api::V1::SessionsController < ApplicationController
   def create
-    director = Director.find_or_create_by(email: director_params[:email])
-    director.update(first_name: director_params[:first_name], 
-                    last_name: director_params[:first_name], 
-                    token: director_params[:token], 
-                    google_id: director_params[:google_id])
-    
-    # session[user_id] = director.id
+    # binding.pry
+    director = Director.find_or_create_by(email: director_attributes[:email])
+    director.update(director_attributes)
+   
     # render json: DirectorSerializer.new(director)
     # TODO look at gem options for serializers 
+
+    # OR consider creating a dashboard and redirect to that? 
+    # redirect_to 'dashboard'
   end
+
+  private
 
   def authorization_hash
     request.env['omniauth.auth']
   end
   
-  def director_params
+  def director_attributes
     {
-      first_name: authorization_hash[:first_name], 
-      last_name: authorization_hash[:first_name], 
-      email: authorization_hash[:email], 
-      token: authorization_hash[:token], 
-      google_id: authorization_hash[:google_id]
+      first_name: authorization_hash[:info][:first_name], 
+      last_name: authorization_hash[:info][:last_name], 
+      email: authorization_hash[:info][:email], 
+      token: authorization_hash[:credentials][:token], 
+      google_id: authorization_hash[:uid]
     }
   end 
 end
-
-# define session id => current_user
-# think about non-oauth login option
-  # UI - linkTo /auth/google_oath2
-# RegistrationService(whatever params)
